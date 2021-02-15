@@ -1,4 +1,6 @@
 const express = require('express')
+
+const PORT = process.env.PORT || 3001
 // 1. instantiate the server
 const app = express()
 // 3. create route that front-end can request data from
@@ -67,6 +69,6 @@ app.get('/api/animals', (req, res) => {
 })
 
 //2. tell server to listen for requests:
-app.listen(3001, () => {
-  console.log(`API server now on port 3001!`)
+app.listen(PORT, () => {
+  console.log(`API server now on port ${PORT}!`)
 })
