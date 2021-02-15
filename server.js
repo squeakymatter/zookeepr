@@ -55,6 +55,13 @@ function filterByQuery(query, animalsArray) {
   return filteredResults
 }
 
+// 8/ add function called findById() that takes in the id and array of animals and returns a single animal object:
+
+function findById(id, animalsArray) {
+  const result = animalsArray.filter((animal) => animal.id === id)[0] //i don't understand this syntax... why is [0] outside?
+  return result
+}
+
 app.get('/api/animals', (req, res) => {
   //?? `send()` method from response `res` parameter to send string to client
   //   res.send('Hello!')
@@ -66,6 +73,16 @@ app.get('/api/animals', (req, res) => {
     results = filterByQuery(req.query, results)
   }
   res.json(results)
+})
+// 7. unlike the query object, the param object needs to be defined in the route path, with route/:<parameterName>. create a new GET route for animals, this time adding :id to the end of the route. This will give us multiple routes.
+app.get('/api/animals/:id', (req, res) => {
+  const result = findById(req.params.id, animals)
+  //9. if no record exists, send a 404 error.
+  if (result) {
+    res.json(result)
+  } else {
+    res.send(404)
+  }
 })
 
 //2. tell server to listen for requests:
