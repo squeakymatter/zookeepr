@@ -56,7 +56,7 @@ function filterByQuery(query, animalsArray) {
 }
 
 app.get('/api/animals', (req, res) => {
-  // `send()` method from response `res` parameter to send string to client
+  //?? `send()` method from response `res` parameter to send string to client
   //   res.send('Hello!')
   // 3-2. update res.send() to res.json() to send JSON. send() is fine for short messages but not for sending JSON
   // 3-3. use `filterByQuery() to handle queries. This way we don't return the entire JSON data
